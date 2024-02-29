@@ -1,2 +1,109 @@
-# example projet advanced programming 
-print("hello")
+#exercice 1
+
+import math
+
+x = float(input("Enter the value for x: "))
+y = float(input("Enter the value for y: "))
+
+print("x is equal to", x)
+print("y is equal to", y)
+
+x_power_y = x ** y
+print("x raised to the power of y:", x_power_y)
+
+log2_x = math.log2(x)
+print("Log base 2 of x:", log2_x)
+
+#ex2 
+dmeters=float(input("Your meters"))
+print("My distance in meters is",dmeters)
+conversion_in_inches=100/2.54
+conversion_in_feet=conversion_in_inches/12
+conversion_in_yard=conversion_in_feet/3
+conversion_in_mile=conversion_in_yard/1760
+D_inches=dmeters*conversion_in_inches
+D_feet=dmeters*conversion_in_feet
+D_yard=dmeters*conversion_in_yard
+D_mile=dmeters*conversion_in_mile
+print("My distance is also",D_inches,"inches","",D_feet,"feet","",D_yard,"yard","",D_mile,"mile")
+
+#ex3
+A=float(input("Your deposit"))
+p=float(input("Your interest rate in %"))
+n=float(input("Your time in bank account"))
+money_growth=A*(1+p/100)**n
+print("After",n,"years,my initial deposit of",A,"dollars has grown to",money_growth,"with a interest rate of",p,"percent")
+
+
+#ex4.1
+from math import sin, cos
+x = float(input("Your number"))
+val = sin(x)** 2 +cos(x)** 2
+print (val)
+#ex 4.2
+v0 = 3
+t = 1 
+a = 2 **2
+s = v0*t + 1/2* a*t**2
+print (s)
+
+#ex.5
+a = 2; b = 1; c = 2
+from math import sqrt
+if (b*b -4*a*c)>=0:
+    q = sqrt(b*b - 4*a*c)
+    x1 = (-b + q)/2*a
+    x2 = (-b - q)/2*a
+    print (x1, x2)
+else:
+    print("Math domain error")
+
+#ex.6
+
+C=float(input("Your celsius"))
+def conversion_far(C):
+    return (C*9/5)+32
+conversion_far(C)
+result=conversion_far(C)
+print(result)
+def conversion_celsius(result):
+    return (5/9)*(result-32)
+result2=conversion_celsius(result)
+if C==result2:
+    print("Good function")
+else:
+    print("Wrong function")
+
+
+#ex 7
+my_list=(1,2,3,4,5,6,7,8)
+def custom_sum(my_list):
+    start=0
+    for i in my_list:
+        start+=i
+    return start
+result=custom_sum(my_list)
+print(result)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
