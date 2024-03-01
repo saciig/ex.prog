@@ -74,18 +74,16 @@ if C==result2:
 else:
     print("Wrong function")
 
-
-#ex 7
-my_list=(1,2,3,4,5,6,7,8)
-def custom_sum(my_list):
-    start=0
+#ex.7
+my_list = [float(input("Enter a number in your list: ")) for i in range(5)]
+print("Your list is the following",my_list) 
+def custom_sum(my_list): 
+    start=0 
     for i in my_list:
-        start+=i
-    return start
+        start+=i 
+    return start 
 result=custom_sum(my_list)
-print(result)
-
-
+print("The sum of your list is:",result)
 
 
 
