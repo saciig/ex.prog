@@ -1,1 +1,19 @@
+# exo 1 #
+v1=(int(input("Your x1:")),int(input("Your y1:"))) 
+v2=(int(input("Your x2:")),int(input("Your y2:"))) 
+v3=(int(input("Your x3:")),int(input("Your y3:"))) 
+def area (v1,v2,v3):
+    area_t= 0.5*(v2[0]*v3[1]-v3[0]*v2[1]-v1[0]*v3[1]+v3[0]*v1[1]+v1[0]*v2[1]-v2[0]*v1[1]) 
+    return area_t 
+print("Your area is:",area(v1,v2,v3))
 
+# exo 2# 
+import math
+m=0
+s=1
+x=list(range(-5,5))
+def gauss(x,m,s):
+        res=(1/(math.sqrt(2*math.pi*s)))*math.exp(-0.5*((x-m)/s)**2)
+        return res 
+for i in x:
+    print("The result of the gaussian function with X =",i, "is",gauss(i,m,s))
