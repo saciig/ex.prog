@@ -17,3 +17,16 @@ def gauss(x,m,s):
         return res 
 for i in x:
     print("The result of the gaussian function with X =",i, "is",gauss(i,m,s))
+
+numbers = list(range(10))
+print("Your list is:",numbers)
+
+#exo 3
+for n in numbers:
+    i = len(numbers) // 2
+    del numbers[i]
+    print('n=%d, del %d' % (n, i), numbers)
+print(numbers)
+
+# the codes does: for n in list: at each iteration the code remove the element i in the middle of the list
+# and print the modified list#
