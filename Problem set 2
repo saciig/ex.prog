@@ -7,6 +7,8 @@ def area (v1,v2,v3):
     return area_t 
 print("Your area is:",area(v1,v2,v3))
 
+
+
 # exo 2# 
 import math
 m=0
@@ -21,7 +23,9 @@ for i in x:
 numbers = list(range(10))
 print("Your list is:",numbers)
 
-#exo 3
+
+
+#exo 3 ####
 for n in numbers:
     i = len(numbers) // 2
     del numbers[i]
@@ -30,3 +34,58 @@ print(numbers)
 
 # the codes does: for n in list: at each iteration the code remove the element i in the middle of the list
 # and print the modified list#
+
+
+
+
+
+# ex 4 ###33
+filename = input("Please enter the name of the file that you want to plot:")
+# We have to create file so that we add the path "dat/" in order to use the open function correctly afterwards
+file = "../dat/" + filename  # we specify the file we want by giving the path + filename (given above (put .dat))
+text = open(file, 'r')  #our file is open and called text
+table = [] # Empty table is created
+
+for line in text: #for each line in the data
+    
+    column = line.split() # we store each line (a string) in substring stored like [x,y]
+    
+    if len(column) == 0 : # we ask the program to not take any actions if there is a blank line, does nothing with these lines
+        
+        continue
+    
+    elif column[0]  == "#" : # Again we ask the program to ingore comments, does nothing with these lines
+        
+        continue
+        #for each line (we are still in for loop), at each time we store an element in column (with index 0,1), 
+        # we take out of column element 0 and store it in temp and element 1 in density then we add to our empty
+        # table the the information [temperature, density]
+    temperature = float(column[0]) # Don't forget to put float as we python will read it as a string no plot will be generared
+    density = float(column[1])
+    
+    table.append([temperature,density])
+
+text.close()
+    
+print (table)
+print (type(table))
+
+    
+    table.append([temperature,density])
+text.close() # once this is done, we close the file    
+print (table)
+print (type(table))
+
+# Now let's make the plot
+
+import matplotlib.pyplot as plt # import the matplot library 
+temp = [i[0] for i in table] # Here we ask the program 
+#to abstruct only the values of the table assigned in the first column and put them on a list named temp
+dens = [i[1] for i in table] # Same logic
+print (temp)
+print (dens)
+plt.scatter(temp,dens, c = "Blue" )
+plt.title("Graph of Density vs Temeprature for " + filename)
+plt.xlabel("Temperature")
+plt.ylabel("Density")
+plt.show()
