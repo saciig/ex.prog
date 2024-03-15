@@ -39,7 +39,8 @@ print(numbers)
 
 
 
-# ex 4 ###33
+# ex 4 ###
+
 filename = input("Please enter the name of the file that you want to plot:")
 # We have to create file so that we add the path "dat/" in order to use the open function correctly afterwards
 file = "../dat/" + filename  # we specify the file we want by giving the path + filename (given above (put .dat))
@@ -89,3 +90,92 @@ plt.title("Graph of Density vs Temeprature for " + filename)
 plt.xlabel("Temperature")
 plt.ylabel("Density")
 plt.show()
+
+
+
+
+
+# ex 5.a
+# water
+
+filename1= input("Enter file name") # dont forget .dat
+
+file_w = "../dat/" + filename1
+
+file_water=open(file_w,"r")
+
+print(file_water)
+
+# air 
+
+filename2= input("Enter file name") # dont forget .dat
+
+file_a = "../dat/" + filename2
+
+file_air=open(file_a,"r")
+
+print(file_air)
+
+# files are opened
+
+# use water
+
+tabel=[]
+
+for i in file_water:
+    column=i.split()
+    if len(column) == 0:
+        continue
+    elif column[0] == "#":
+        continue
+    temperature=float(column[0])
+    density=float(column[1])
+    tabel.append([temperature,density])
+print("Your tabel is",tabel)
+x=[i[0] for i in tabel]
+y=[i[1] for i in tabel] 
+
+print("Your temperatures are ",x)
+print("Your densities are",y)
+file_water.close()  # Don't forget to close the files
+file_air.close()
+
+# ex 5.b
+
+import matplotlib.pyplot as plt # import the matplot library 
+plt.scatter(x,y, c = "Blue" )
+plt.title("Graph of Density vs Temeprature for " + filename1)
+plt.xlabel("Temperature")
+plt.ylabel("Density")
+
+import numpy as np
+
+# np. is a prefix used to access functions, methods, or attributes from the NumPy library.
+
+x1 = np.array(x) # assign the values of x,y as temp and dens which are loaded from the previous exercise
+y1 = np.array(y) # with these formula you create a new list which allow to perform mathematical derivations
+
+coeff1 = np.polyfit(x1, y1, 1)
+coeff2 = np.polyfit(x1,y1,2)
+
+p1 = np.poly1d(coeff1)
+print(p1)
+p2= np.poly1d(coeff2)
+print(p2)
+
+y_fitted_1 = p1(x1) # Calculate the fitted values as indicated on the given code
+y_fitted_2 = p2(y1)
+
+plt.scatter(x1,y1,color = "blue")
+plt.plot(x1,y_fitted_1, color = "red",linestyle = "-")
+plt.plot(x1,y_fitted_2, color = "green", linestyle = "-")
+plt.title('Density vs temperature for ' + filename1)
+plt.legend(['data', 'fitted polynomial of degree 1', 'fitted polynomial of degree 2'])
+plt.xlabel('Temperature in Celsius degrees')
+plt.ylabel('Density in kg/m^3')
+plt.show()
+
+
+
+
+
