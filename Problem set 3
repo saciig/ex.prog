@@ -1,1 +1,81 @@
+from math import pi, sin
+import math
+class F(object):
+    def __init__(self,a,w):
+        self.a=a
+        self.w=w  # we define there that the value a, w (we are going to submit) are attribute for this instance, self is the instance
+    def function(self,x):
+        result=math.exp(-self.a*self.w)*math.sin(self.w*x)
+        return "Your result is: "+ str(result)
+f1=F(5,6)
+print(f1.function(2))
+class F2(object):
+    def __init__(self,a,w):
+        self.a=a
+        self.w=w  # we define there that the value a, w (we are going to submit) are attribute for this instance, self is the instance
+    def function(self,x):
+        result=math.exp(-self.a*self.w)*math.sin(self.w*x)
+        return "Your result is: "+ str(result)
+f2=F(a=5,w=6)
+print(f2.function(2))
+
+if f2.function(2)==f1.function(2):
+    print("Your functions are both well defined")
+else:
+    print("They are not well defined")
+
+
+
+
+
+# ex 2 chat gpt
+
+class Account:
+    def __init__(self, name, account_number, initial_amount):
+        self.name = name
+        self.no = account_number
+        self.balance = initial_amount
+        self.transaction=0 # we set that to zero
+    
+    def deposit(self, amount): # you have to give this variable because its not an attribute of 
+        # your classe , same as function from ex 1 
+        self.balance += amount
+        self.transaction+=1
+    
+    def withdraw(self, amount):
+        self.balance -= amount
+        self.transaction+=1
+    
+    def dump(self):
+        s="Name "+str(self.name)+" , account number : " +str(self.no)+ ", balance : "+ str(self.balance)+ ", number of transactions : "+ str(self.transaction)
+        return s 
+    
+# Instantiate the Account objects
+a1 = Account('John Olsson', '19371554951', 20000) 
+a2 = Account('Liz Olsson', '19371564761', 20000)
+
+# Perform transactions
+a1.deposit(1000)
+a1.withdraw(4000)
+a2.withdraw(10500)
+a1.withdraw(3500)
+
+# Print balances
+print("a1’s balance:", a1.balance)
+print("a2’s balance:", a2.balance)
+
+# Dump account details
+print(a1.dump())
+print(a2.dump())
+
+#Add an attribute transactions to the Account class from above. The new attribute counts the 
+#number of transactions done in the deposit and withdraw methods. The total number of transactions
+#should be printed in the dump method. Write a simple test program to demonstrate that transaction 
+#gets the right value after some calls to deposit and withdraw
+
+
+
+
+# The key to understand is that, the once you have defined your object and created an instance,
+# all the operation you perform on your instance will be captured and you can use incrementation during this process
 
