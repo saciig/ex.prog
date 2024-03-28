@@ -79,3 +79,89 @@ print(a2.dump())
 # The key to understand is that, the once you have defined your object and created an instance,
 # all the operation you perform on your instance will be captured and you can use incrementation during this process
 
+# ex 3 
+
+class line_class (object):
+    def __init__(self,p1,p2): # Assigning to an instance in Python means attaching a value or object to a specific instance of a class. When you create an instance of a class, it's like creating a container for all the attributes and methods defined within that class. 
+        #Each instance has its own set of attributes and methods that are independent of other instances of the same class. # you can think of init as empty list you fill with object of your instance
+        self.p1=p1
+        self.p2=p2
+        self.x1, self.y1=p1
+        self.x2, self.y2=p2
+    
+    def pres(self):  # when you do so, you put self as argument, self represent the var assigned to this instance 
+        return "p1 is "+ str(self.p1) + "and p2 is "+ str(self.p2)
+    
+    def slope_function(self):
+        slope=(self.x1-self.x2)/(self.y1-self.y2)
+        return slope
+    
+    def intercept_function(self):
+        slope=self.slope_function()
+        intercept=self.y1-self.x1*slope
+        return intercept
+    
+    def value_pointx(self,x):
+        slope=self.slope_function()
+        intercept=self.intercept_function()
+        y=intercept+ slope*x
+        return "The value of the function at "+ str(x) +" is "+ str(y)
+    
+    def summary_function(self):
+        slope=self.slope_function()
+        intercept=self.intercept_function()
+    
+        return "With the following points : "+ str(self.p1)+" , "+ str(self.p2) + ", we have a slope of : " + str(slope) + " and an intercept of : "+ str(intercept)
+    
+    
+p1=(3,8)
+p2=(2,-5)
+x1 = line_class(p1,p2)
+print(x1.pres())
+print(x1.summary_function())
+print(x1.value_pointx(20))
+
+
+
+# ex 4
+
+print(f(5))
+
+class central(object):
+    def __init__(self,f,h):
+        self.f=f
+        self.h=h
+    def pres(self):
+        return " My function is "+ str(self.f)+ " and my approx. error h is : " + str(self.h)
+    
+    def value_function(self,x):
+        return " My function evaluated at " + str(x) + " is equal to " + str(self.f(x))
+    
+    def derivative_approx(self,x):
+        result = (f(x+self.h)-f(x-self.h))/(2*self.h)
+        return "The derivative of the log function evaluated at "+ str(x) + " is: " + str(result)+ " with the approx. error " + str(self.h)
+
+import math 
+
+f = lambda x: math.log(x)  # this line define an anonymous function log (x) which defined as f 
+
+logfunction=central(f,0.5)
+print(logfunction.pres())
+print(logfunction.value_function(1))
+print(logfunction.derivative_approx(1))
+
+
+for i in (0.5,0.1,10**-3,10**-5,10**-7,10**-9,10**-11):
+    logfunction=central(f,i)
+    print(logfunction.derivative_approx(1))
+    
+  
+
+    
+
+        
+        
+        
+    
+
+
